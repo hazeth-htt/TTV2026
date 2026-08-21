@@ -125,7 +125,7 @@ body {
   }
 }
 
-/* Glowing Green/Cyan Light Rays Radiating from the Witch */
+/* Glowing Golden Light Rays Radiating from the Witch */
 .magic-light-rays {
   position: absolute;
   top: 36%;
@@ -138,15 +138,13 @@ body {
   z-index: 0;
   background: repeating-conic-gradient(
     from 0deg,
-    rgba(0, 255, 204, 0.6) 0deg 8deg,
-    rgba(0, 240, 255, 0.28) 8deg 16deg,
-    transparent 16deg 26deg,
-    rgba(57, 255, 140, 0.52) 26deg 36deg,
-    transparent 36deg 52deg
+    rgba(255, 235, 110, 0.55) 0deg 22deg,
+    rgba(255, 215, 0, 0.22) 22deg 27deg,
+    transparent 27deg 60deg
   );
   -webkit-mask-image: radial-gradient(ellipse 68% 50% at center, rgba(0, 0, 0, 1) 22%, rgba(0, 0, 0, 0.65) 58%, transparent 82%);
   mask-image: radial-gradient(ellipse 68% 50% at center, rgba(0, 0, 0, 1) 22%, rgba(0, 0, 0, 0.65) 58%, transparent 82%);
-  filter: blur(2.5px) drop-shadow(0 0 35px rgba(0, 255, 204, 0.85));
+  filter: blur(4px) drop-shadow(0 0 35px rgba(255, 215, 0, 0.8));
   mix-blend-mode: screen;
   animation: raysRotateClockwise 45s linear infinite;
 }
@@ -169,7 +167,7 @@ body {
   width: 600px;
   height: 450px;
   top: 15%;
-  background: radial-gradient(circle, rgba(0, 255, 204, 0.35) 0%, rgba(211, 35, 255, 0.25) 45%, rgba(111, 36, 255, 0.15) 65%, transparent 80%);
+  background: radial-gradient(circle, rgba(255, 235, 110, 0.35) 0%, rgba(211, 35, 255, 0.2) 45%, rgba(111, 36, 255, 0.12) 65%, transparent 80%);
   filter: blur(45px);
   border-radius: 50%;
   pointer-events: none;
