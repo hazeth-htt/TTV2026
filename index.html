@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tuyển Thành Viên 7 CLB - Chào Tân Sinh Viên</title>
+  <meta name="description" content="Chào mừng tân sinh viên! Hãy chọn con đường bạn muốn trở thành và tham gia vào 1 trong 7 CLB trường chúng mình.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@400;500;600;700;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Canvas for magical sparkles/stars effect -->
+  <canvas id="magic-canvas"></canvas>
+
+  <!-- Main Container -->
+  <main class="landing-container" id="landing-app">
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      
+      <!-- Composite Character + Title Banner Graphic -->
+      <div class="hero-graphic-container">
+        <div class="magic-aura"></div>
+        <img 
+          src="assets/images/hero-witch.png" 
+          alt="Phù thủy Ban Văn Nghệ Thể Thao" 
+          class="hero-witch-img"
+          id="hero-character-img"
+        />
+        <img 
+          src="assets/images/title-banner.png" 
+          alt="Tuyển thành viên CLB Trực thuộc Ban Văn Nghệ Thể Thao" 
+          class="hero-title-overlay"
+          id="title-banner-img"
+        />
+        <!-- Magic sparkles around witch -->
+        <span class="floating-sparkle sp-1">✦</span>
+        <span class="floating-sparkle sp-2">★</span>
+        <span class="floating-sparkle sp-3">✧</span>
+      </div>
+
+      <!-- Badges Bar (Isolation Mode in Figma) -->
+      <section class="clubs-badges-section" id="clubs-section">
+        <div class="badges-track">
+          
+          <!-- 1. GLEEBK - Câu lạc bộ Âm nhạc Đoàn Đại học Bách khoa Hà Nội -->
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScm9odnM1ONY_QPywPoOuNTKGAM40YjxsWRyUJLKRImD6HjCw/viewform" target="_blank" rel="noopener noreferrer" class="badge-card" aria-label="GLEEBK - Câu lạc bộ Âm nhạc Đoàn Đại học Bách khoa Hà Nội">
+            <div class="badge-glow"></div>
+            <div class="badge-img-wrapper">
+              <img src="assets/images/badge-club-1.png" alt="GLEEBK - CLB Âm nhạc" class="badge-img">
+            </div>
+            <div class="badge-tooltip">GLEEBK - CLB Âm nhạc</div>
+          </a>
+
+          <!-- 2. D.O.P - Câu lạc bộ Nhảy Đoàn Đại học Bách khoa Hà Nội -->
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScTecYj-JC1fh9MpdtZIYdRSEkH1u4VKqmZ3G_IQ8_f7t7sFg/viewform?fbzx=7414989199287447880" target="_blank" rel="noopener noreferrer" class="badge-card" aria-label="D.O.P - Câu lạc bộ Nhảy Đoàn Đại học Bách khoa Hà Nội">
+            <div class="badge-glow"></div>
+            <div class="badge-img-wrapper">
+              <img src="assets/images/badge-club-2.png" alt="D.O.P - CLB Nhảy" class="badge-img">
+            </div>
+            <div class="badge-tooltip">D.O.P - CLB Nhảy</div>
+          </a>
+
+          <!-- 3. D.A.S - Câu lạc bộ Kịch Đoàn Đại học Bách khoa Hà Nội -->
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdxooFXmvITYzMD4yzp9NBa02VOE7hEPOhOwiJOveMau7Espw/viewform" target="_blank" rel="noopener noreferrer" class="badge-card" aria-label="D.A.S - Câu lạc bộ Kịch Đoàn Đại học Bách khoa Hà Nội">
+            <div class="badge-glow"></div>
+            <div class="badge-img-wrapper">
+              <img src="assets/images/badge-club-3.png" alt="D.A.S - CLB Kịch" class="badge-img">
+            </div>
+            <div class="badge-tooltip">D.A.S - CLB Kịch</div>
+          </a>
+
+          <!-- 4. BeU - Câu lạc bộ Múa Đoàn Đại học Bách khoa Hà Nội -->
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScRl7KrOUQwVpbcsgYIwQgSwYAo_Mhp2wvSYMIY3lX58StdPg/viewform" target="_blank" rel="noopener noreferrer" class="badge-card" aria-label="BeU - Câu lạc bộ Múa Đoàn Đại học Bách khoa Hà Nội">
+            <div class="badge-glow"></div>
+            <div class="badge-img-wrapper">
+              <img src="assets/images/badge-club-4.png" alt="BeU - CLB Múa" class="badge-img">
+            </div>
+            <div class="badge-tooltip">BeU - CLB Múa</div>
+          </a>
+
+          <!-- 5. Hust Basketball Club - Câu lạc bộ Bóng rổ Đoàn Đại học Bách khoa Hà Nội -->
+          <a href="#" target="_blank" rel="noopener noreferrer" class="badge-card" aria-label="Hust Basketball Club - Câu lạc bộ Bóng rổ Đoàn Đại học Bách khoa Hà Nội">
+            <div class="badge-glow"></div>
+            <div class="badge-img-wrapper">
+              <img src="assets/images/badge-club-5.png" alt="Hust Basketball Club - CLB Bóng rổ" class="badge-img">
+            </div>
+            <div class="badge-tooltip">Hust Basketball Club - CLB Bóng rổ</div>
+          </a>
+
+          <!-- 6. EMCEE - Câu lạc bộ Dẫn Chương trình Đoàn Đại học Bách khoa Hà Nội -->
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScopBWXCUhpxIMAZxTD6WI_i2ON0ZcrzRuHpoptZYrahtwRsw/viewform" target="_blank" rel="noopener noreferrer" class="badge-card" aria-label="EMCEE - Câu lạc bộ Dẫn Chương trình Đoàn Đại học Bách khoa Hà Nội">
+            <div class="badge-glow"></div>
+            <div class="badge-img-wrapper">
+              <img src="assets/images/badge-club-6.png" alt="EMCEE - CLB Dẫn Chương trình" class="badge-img">
+            </div>
+            <div class="badge-tooltip">EMCEE - CLB Dẫn Chương trình</div>
+          </a>
+
+          <!-- 7. Hust Red Owls Team - Câu lạc bộ Bóng chày Đoàn Đại học Bách khoa Hà Nội -->
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSex1vSKgLOPmcXRAvi65w51PhyF3q3KC0T9_dJ2iBYglY_vpw/viewform" target="_blank" rel="noopener noreferrer" class="badge-card" aria-label="Hust Red Owls Team - Câu lạc bộ Bóng chày Đoàn Đại học Bách khoa Hà Nội">
+            <div class="badge-glow"></div>
+            <div class="badge-img-wrapper">
+              <img src="assets/images/badge-club-7.png" alt="Hust Red Owls Team - CLB Bóng chày" class="badge-img">
+            </div>
+            <div class="badge-tooltip">Hust Red Owls Team - CLB Bóng chày</div>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- Bottom Texts (Frame 1 in Figma) -->
+      <div class="hero-callout">
+        <h1 class="callout-heading">Hãy chọn con đường bạn muốn trở thành</h1>
+        <p class="callout-sub">Click vào huy hiệu để đi đến nơi bạn muốn đến</p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Main JavaScript Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
