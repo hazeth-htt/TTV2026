@@ -128,38 +128,38 @@ body {
 /* Glowing Green/Cyan Light Rays Radiating from the Witch */
 .magic-light-rays {
   position: absolute;
-  top: 38%;
+  top: 36%;
   left: 50%;
-  width: 1400px;
-  height: 850px;
+  width: 1750px;
+  height: 980px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
   background: repeating-conic-gradient(
     from 0deg,
-    rgba(0, 255, 204, 0.48) 0deg 10deg,
-    rgba(0, 240, 255, 0.2) 10deg 18deg,
-    transparent 18deg 28deg,
-    rgba(57, 255, 140, 0.42) 28deg 40deg,
-    transparent 40deg 58deg
+    rgba(0, 255, 204, 0.6) 0deg 8deg,
+    rgba(0, 240, 255, 0.28) 8deg 16deg,
+    transparent 16deg 26deg,
+    rgba(57, 255, 140, 0.52) 26deg 36deg,
+    transparent 36deg 52deg
   );
-  -webkit-mask-image: radial-gradient(ellipse 62% 48% at center, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0.6) 52%, transparent 76%);
-  mask-image: radial-gradient(ellipse 62% 48% at center, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0.6) 52%, transparent 76%);
-  filter: blur(8px) drop-shadow(0 0 45px rgba(0, 255, 204, 0.7));
+  -webkit-mask-image: radial-gradient(ellipse 68% 50% at center, rgba(0, 0, 0, 1) 22%, rgba(0, 0, 0, 0.65) 58%, transparent 82%);
+  mask-image: radial-gradient(ellipse 68% 50% at center, rgba(0, 0, 0, 1) 22%, rgba(0, 0, 0, 0.65) 58%, transparent 82%);
+  filter: blur(2.5px) drop-shadow(0 0 35px rgba(0, 255, 204, 0.85));
   mix-blend-mode: screen;
   animation: raysRotateClockwise 45s linear infinite;
 }
 
 @keyframes raysRotateClockwise {
   0% {
-    transform: translate(-50%, -50%) rotate(0deg) scale(0.96);
+    transform: translate(-50%, -50%) rotate(0deg) scale(0.97);
   }
   50% {
-    transform: translate(-50%, -50%) rotate(180deg) scale(1.04);
+    transform: translate(-50%, -50%) rotate(180deg) scale(1.03);
   }
   100% {
-    transform: translate(-50%, -50%) rotate(360deg) scale(0.96);
+    transform: translate(-50%, -50%) rotate(360deg) scale(0.97);
   }
 }
 
@@ -708,8 +708,8 @@ body {
   }
 
   .magic-light-rays {
-    width: 950px;
-    height: 650px;
+    width: 1200px;
+    height: 750px;
   }
 
   .badges-track {
@@ -741,8 +741,8 @@ body {
   }
 
   .magic-light-rays {
-    width: 700px;
-    height: 500px;
+    width: 850px;
+    height: 560px;
   }
 
   .badges-track {
@@ -771,8 +771,8 @@ body {
   }
 
   .magic-light-rays {
-    width: 480px;
-    height: 380px;
+    width: 580px;
+    height: 420px;
   }
 
   .badges-track {
