@@ -130,8 +130,8 @@ body {
   position: absolute;
   top: 36%;
   left: 50%;
-  width: 2600px;
-  height: 2600px;
+  width: 1750px;
+  height: 980px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   pointer-events: none;
@@ -141,8 +141,8 @@ body {
     rgba(255, 235, 110, 0.55) 0deg 22deg,
     transparent 22deg 60deg
   );
-  -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 0.65) 68%, transparent 88%);
-  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 0.65) 68%, transparent 88%);
+  -webkit-mask-image: radial-gradient(ellipse 68% 50% at center, rgba(0, 0, 0, 1) 22%, rgba(0, 0, 0, 0.65) 58%, transparent 82%);
+  mask-image: radial-gradient(ellipse 68% 50% at center, rgba(0, 0, 0, 1) 22%, rgba(0, 0, 0, 0.65) 58%, transparent 82%);
   filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5));
   mix-blend-mode: screen;
   animation: raysRotateClockwise 45s linear infinite;
@@ -150,13 +150,13 @@ body {
 
 @keyframes raysRotateClockwise {
   0% {
-    transform: translate(-50%, -50%) rotate(0deg) scale(0.98);
+    transform: translate(-50%, -50%) rotate(0deg) scale(0.97);
   }
   50% {
-    transform: translate(-50%, -50%) rotate(180deg) scale(1.02);
+    transform: translate(-50%, -50%) rotate(180deg) scale(1.03);
   }
   100% {
-    transform: translate(-50%, -50%) rotate(360deg) scale(0.98);
+    transform: translate(-50%, -50%) rotate(360deg) scale(0.97);
   }
 }
 
@@ -679,8 +679,8 @@ body {
   }
 
   .magic-light-rays {
-    width: 2100px;
-    height: 2100px;
+    width: 1200px;
+    height: 750px;
   }
 
   .badges-track {
@@ -712,8 +712,8 @@ body {
   }
 
   .magic-light-rays {
-    width: 1700px;
-    height: 1700px;
+    width: 850px;
+    height: 560px;
   }
 
   .badges-track {
@@ -742,8 +742,8 @@ body {
   }
 
   .magic-light-rays {
-    width: 1300px;
-    height: 1300px;
+    width: 580px;
+    height: 420px;
   }
 
   .badges-track {
