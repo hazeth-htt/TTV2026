@@ -125,17 +125,88 @@ body {
   }
 }
 
+/* Glowing Green/Cyan Light Rays Radiating from the Witch */
+.magic-light-rays {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  width: 900px;
+  height: 900px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(0, 255, 204, 0.45) 0deg 8deg,
+    rgba(0, 240, 255, 0.15) 8deg 14deg,
+    transparent 14deg 22deg,
+    rgba(57, 255, 140, 0.4) 22deg 30deg,
+    transparent 30deg 45deg
+  );
+  -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 18%, rgba(0, 0, 0, 0.6) 48%, transparent 72%);
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 18%, rgba(0, 0, 0, 0.6) 48%, transparent 72%);
+  filter: blur(6px) drop-shadow(0 0 35px rgba(0, 255, 204, 0.65));
+  mix-blend-mode: screen;
+  animation: raysRotateClockwise 40s linear infinite;
+}
+
+.magic-light-rays-inner {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  width: 720px;
+  height: 720px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  background: repeating-conic-gradient(
+    from 15deg,
+    rgba(0, 255, 230, 0.35) 0deg 12deg,
+    transparent 12deg 26deg,
+    rgba(100, 255, 180, 0.3) 26deg 36deg,
+    transparent 36deg 52deg
+  );
+  -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 15%, transparent 65%);
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 15%, transparent 65%);
+  filter: blur(10px) drop-shadow(0 0 25px rgba(0, 255, 230, 0.5));
+  mix-blend-mode: screen;
+  animation: raysRotateCounter 30s linear infinite;
+}
+
+@keyframes raysRotateClockwise {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(0.96);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg) scale(1.04);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(0.96);
+  }
+}
+
+@keyframes raysRotateCounter {
+  0% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
 /* Magical Aura behind character */
 .magic-aura {
   position: absolute;
-  width: 550px;
-  height: 400px;
+  width: 600px;
+  height: 450px;
   top: 15%;
-  background: radial-gradient(circle, rgba(211, 35, 255, 0.4) 0%, rgba(111, 36, 255, 0.2) 50%, transparent 75%);
+  background: radial-gradient(circle, rgba(0, 255, 204, 0.35) 0%, rgba(211, 35, 255, 0.25) 45%, rgba(111, 36, 255, 0.15) 65%, transparent 80%);
   filter: blur(45px);
   border-radius: 50%;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
   animation: auraPulse 4s ease-in-out infinite alternate;
 }
 
@@ -669,6 +740,16 @@ body {
     max-width: 950px;
   }
 
+  .magic-light-rays {
+    width: 750px;
+    height: 750px;
+  }
+
+  .magic-light-rays-inner {
+    width: 600px;
+    height: 600px;
+  }
+
   .badges-track {
     gap: 0.7rem;
   }
@@ -697,6 +778,16 @@ body {
     max-width: 100%;
   }
 
+  .magic-light-rays {
+    width: 550px;
+    height: 550px;
+  }
+
+  .magic-light-rays-inner {
+    width: 440px;
+    height: 440px;
+  }
+
   .badges-track {
     gap: 0.55rem;
   }
@@ -720,6 +811,16 @@ body {
 @media (max-width: 480px) {
   .hero-graphic-container {
     margin-bottom: 0;
+  }
+
+  .magic-light-rays {
+    width: 380px;
+    height: 380px;
+  }
+
+  .magic-light-rays-inner {
+    width: 300px;
+    height: 300px;
   }
 
   .badges-track {
