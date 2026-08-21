@@ -139,12 +139,11 @@ body {
   background: repeating-conic-gradient(
     from 0deg,
     rgba(255, 235, 110, 0.55) 0deg 22deg,
-    rgba(255, 215, 0, 0.22) 22deg 27deg,
-    transparent 27deg 60deg
+    transparent 22deg 60deg
   );
-  -webkit-mask-image: radial-gradient(ellipse 68% 50% at center, rgba(0, 0, 0, 1) 22%, rgba(0, 0, 0, 0.65) 58%, transparent 82%);
-  mask-image: radial-gradient(ellipse 68% 50% at center, rgba(0, 0, 0, 1) 22%, rgba(0, 0, 0, 0.65) 58%, transparent 82%);
-  filter: blur(4px) drop-shadow(0 0 35px rgba(255, 215, 0, 0.8));
+  -webkit-mask-image: radial-gradient(ellipse 70% 50% at center, rgba(0, 0, 0, 1) 25%, transparent 80%);
+  mask-image: radial-gradient(ellipse 70% 50% at center, rgba(0, 0, 0, 1) 25%, transparent 80%);
+  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.5));
   mix-blend-mode: screen;
   animation: raysRotateClockwise 45s linear infinite;
 }
@@ -158,32 +157,6 @@ body {
   }
   100% {
     transform: translate(-50%, -50%) rotate(360deg) scale(0.97);
-  }
-}
-
-/* Magical Aura behind character */
-.magic-aura {
-  position: absolute;
-  width: 600px;
-  height: 450px;
-  top: 15%;
-  background: radial-gradient(circle, rgba(255, 235, 110, 0.35) 0%, rgba(211, 35, 255, 0.2) 45%, rgba(111, 36, 255, 0.12) 65%, transparent 80%);
-  filter: blur(45px);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-  animation: auraPulse 4s ease-in-out infinite alternate;
-}
-
-@keyframes auraPulse {
-  0% {
-    transform: scale(0.85);
-    opacity: 0.6;
-  }
-
-  100% {
-    transform: scale(1.2);
-    opacity: 0.95;
   }
 }
 
