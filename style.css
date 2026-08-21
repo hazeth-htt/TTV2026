@@ -138,10 +138,10 @@ body {
   z-index: 0;
   background: repeating-conic-gradient(
     from 0deg,
-    rgba(0, 255, 204, 0.5) 0deg 10deg,
-    rgba(0, 240, 255, 0.22) 10deg 18deg,
+    rgba(0, 255, 204, 0.48) 0deg 10deg,
+    rgba(0, 240, 255, 0.2) 10deg 18deg,
     transparent 18deg 28deg,
-    rgba(57, 255, 140, 0.45) 28deg 40deg,
+    rgba(57, 255, 140, 0.42) 28deg 40deg,
     transparent 40deg 58deg
   );
   -webkit-mask-image: radial-gradient(ellipse 62% 48% at center, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0.6) 52%, transparent 76%);
@@ -149,30 +149,6 @@ body {
   filter: blur(8px) drop-shadow(0 0 45px rgba(0, 255, 204, 0.7));
   mix-blend-mode: screen;
   animation: raysRotateClockwise 45s linear infinite;
-}
-
-.magic-light-rays-inner {
-  position: absolute;
-  top: 38%;
-  left: 50%;
-  width: 1150px;
-  height: 700px;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-  background: repeating-conic-gradient(
-    from 15deg,
-    rgba(0, 255, 230, 0.4) 0deg 14deg,
-    transparent 14deg 30deg,
-    rgba(100, 255, 180, 0.38) 30deg 45deg,
-    transparent 45deg 62deg
-  );
-  -webkit-mask-image: radial-gradient(ellipse 60% 45% at center, rgba(0, 0, 0, 1) 18%, transparent 70%);
-  mask-image: radial-gradient(ellipse 60% 45% at center, rgba(0, 0, 0, 1) 18%, transparent 70%);
-  filter: blur(12px) drop-shadow(0 0 35px rgba(0, 255, 230, 0.6));
-  mix-blend-mode: screen;
-  animation: raysRotateCounter 35s linear infinite;
 }
 
 @keyframes raysRotateClockwise {
@@ -184,15 +160,6 @@ body {
   }
   100% {
     transform: translate(-50%, -50%) rotate(360deg) scale(0.96);
-  }
-}
-
-@keyframes raysRotateCounter {
-  0% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(0deg);
   }
 }
 
@@ -741,13 +708,8 @@ body {
   }
 
   .magic-light-rays {
-    width: 750px;
-    height: 750px;
-  }
-
-  .magic-light-rays-inner {
-    width: 600px;
-    height: 600px;
+    width: 950px;
+    height: 650px;
   }
 
   .badges-track {
@@ -779,13 +741,8 @@ body {
   }
 
   .magic-light-rays {
-    width: 550px;
-    height: 550px;
-  }
-
-  .magic-light-rays-inner {
-    width: 440px;
-    height: 440px;
+    width: 700px;
+    height: 500px;
   }
 
   .badges-track {
@@ -814,13 +771,8 @@ body {
   }
 
   .magic-light-rays {
-    width: 380px;
+    width: 480px;
     height: 380px;
-  }
-
-  .magic-light-rays-inner {
-    width: 300px;
-    height: 300px;
   }
 
   .badges-track {
