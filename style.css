@@ -128,51 +128,51 @@ body {
 /* Glowing Green/Cyan Light Rays Radiating from the Witch */
 .magic-light-rays {
   position: absolute;
-  top: 42%;
+  top: 38%;
   left: 50%;
-  width: 900px;
-  height: 900px;
+  width: 1400px;
+  height: 850px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
   background: repeating-conic-gradient(
     from 0deg,
-    rgba(0, 255, 204, 0.45) 0deg 8deg,
-    rgba(0, 240, 255, 0.15) 8deg 14deg,
-    transparent 14deg 22deg,
-    rgba(57, 255, 140, 0.4) 22deg 30deg,
-    transparent 30deg 45deg
+    rgba(0, 255, 204, 0.5) 0deg 10deg,
+    rgba(0, 240, 255, 0.22) 10deg 18deg,
+    transparent 18deg 28deg,
+    rgba(57, 255, 140, 0.45) 28deg 40deg,
+    transparent 40deg 58deg
   );
-  -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 18%, rgba(0, 0, 0, 0.6) 48%, transparent 72%);
-  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 18%, rgba(0, 0, 0, 0.6) 48%, transparent 72%);
-  filter: blur(6px) drop-shadow(0 0 35px rgba(0, 255, 204, 0.65));
+  -webkit-mask-image: radial-gradient(ellipse 62% 48% at center, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0.6) 52%, transparent 76%);
+  mask-image: radial-gradient(ellipse 62% 48% at center, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0.6) 52%, transparent 76%);
+  filter: blur(8px) drop-shadow(0 0 45px rgba(0, 255, 204, 0.7));
   mix-blend-mode: screen;
-  animation: raysRotateClockwise 40s linear infinite;
+  animation: raysRotateClockwise 45s linear infinite;
 }
 
 .magic-light-rays-inner {
   position: absolute;
-  top: 42%;
+  top: 38%;
   left: 50%;
-  width: 720px;
-  height: 720px;
+  width: 1150px;
+  height: 700px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
   background: repeating-conic-gradient(
     from 15deg,
-    rgba(0, 255, 230, 0.35) 0deg 12deg,
-    transparent 12deg 26deg,
-    rgba(100, 255, 180, 0.3) 26deg 36deg,
-    transparent 36deg 52deg
+    rgba(0, 255, 230, 0.4) 0deg 14deg,
+    transparent 14deg 30deg,
+    rgba(100, 255, 180, 0.38) 30deg 45deg,
+    transparent 45deg 62deg
   );
-  -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 15%, transparent 65%);
-  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 15%, transparent 65%);
-  filter: blur(10px) drop-shadow(0 0 25px rgba(0, 255, 230, 0.5));
+  -webkit-mask-image: radial-gradient(ellipse 60% 45% at center, rgba(0, 0, 0, 1) 18%, transparent 70%);
+  mask-image: radial-gradient(ellipse 60% 45% at center, rgba(0, 0, 0, 1) 18%, transparent 70%);
+  filter: blur(12px) drop-shadow(0 0 35px rgba(0, 255, 230, 0.6));
   mix-blend-mode: screen;
-  animation: raysRotateCounter 30s linear infinite;
+  animation: raysRotateCounter 35s linear infinite;
 }
 
 @keyframes raysRotateClockwise {
