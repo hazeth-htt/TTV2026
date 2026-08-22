@@ -1074,7 +1074,7 @@ body {
    RESPONSIVE DESIGN BREAKPOINTS
    ========================================================================== */
 
-/* Tablets & Small Laptops (<= 1100px) -> Transition to 2 - 1 - 2 - 2 */
+/* Tablets & Small Laptops (<= 1100px) */
 @media (max-width: 1100px) {
   .hero-graphic-container {
     max-width: 950px;
@@ -1093,83 +1093,123 @@ body {
     gap: 1.8rem;
   }
 
-  .clubs-row-3 {
-    flex-wrap: wrap;
-    max-width: 640px;
-    gap: 1.8rem;
-  }
-
+  .clubs-row-3,
   .clubs-row-2 {
-    flex-wrap: nowrap;
-    max-width: 640px;
     gap: 1.8rem;
   }
 }
 
-/* Tablets (<= 768px) -> 2 - 1 - 2 - 2 */
+/* Mobile Devices & Small Tablets (<= 768px) -> Bố cục 1 - 1 - 1 - 1 - 1 - 1 - 1 */
 @media (max-width: 768px) {
   .landing-container {
-    padding: 1.5rem 1.2rem 2.5rem 1.2rem;
+    padding: 1rem 1rem 2rem 1rem;
   }
 
   .hero-graphic-container {
     max-width: 100%;
+    margin-top: 0;
   }
 
-  .section-title-img {
-    width: 440px;
-    max-width: 90%;
+  .hero-light-aura {
+    width: 1600px;
+    height: 1600px;
   }
 
-  .club-badge-img {
-    width: 210px;
+  .register-btn-img {
+    width: 280px;
+    max-width: 85vw;
   }
 
-  .clubs-grid-container {
-    gap: 1.4rem;
+  .figma-section-container {
+    margin-top: 3.5rem;
+    min-height: auto;
   }
 
-  .clubs-row-3 {
-    flex-wrap: wrap;
-    max-width: 480px;
-    gap: 1.2rem;
+  .figma-section-content {
+    padding: 5rem 1rem 4rem 1rem;
   }
 
-  .clubs-row-2 {
-    flex-wrap: nowrap;
-    max-width: 480px;
-    gap: 1.2rem;
-  }
-}
-
-/* Mobile Phones (<= 480px) -> 2 - 1 - 2 - 2 */
-@media (max-width: 480px) {
-  .hero-graphic-container {
-    margin-bottom: 0;
+  .section-title-wrapper {
+    margin-bottom: 2rem;
   }
 
   .section-title-img {
     width: 100%;
+    max-width: 380px;
+  }
+
+  /* Bố cục cột dọc 1 - 1 - 1 - 1 - 1 - 1 - 1 */
+  .clubs-grid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+    width: 100%;
+  }
+
+  .clubs-row,
+  .clubs-row-3,
+  .clubs-row-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 1.6rem;
+    flex-wrap: nowrap;
+  }
+
+  .club-badge-item {
+    width: 100%;
     max-width: 320px;
+    display: flex;
+    justify-content: center;
   }
 
   .club-badge-img {
-    width: 152px;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+}
+
+/* Small Mobile Phones (<= 480px) */
+@media (max-width: 480px) {
+  .landing-container {
+    padding: 0.8rem 0.8rem 1.8rem 0.8rem;
+  }
+
+  .register-btn-wrapper {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  .register-btn-img {
+    width: 260px;
+    max-width: 82vw;
+  }
+
+  .figma-section-content {
+    padding: 4.2rem 0.8rem 3.5rem 0.8rem;
+  }
+
+  .section-title-img {
+    max-width: 300px;
   }
 
   .clubs-grid-container {
-    gap: 1rem;
+    gap: 1.2rem;
   }
 
-  .clubs-row-3 {
-    flex-wrap: wrap;
-    max-width: 340px;
-    gap: 0.8rem;
-  }
-
+  .clubs-row,
+  .clubs-row-3,
   .clubs-row-2 {
-    flex-wrap: nowrap;
-    max-width: 340px;
-    gap: 0.8rem;
+    gap: 1.2rem;
+  }
+
+  .club-badge-item {
+    max-width: 280px;
+  }
+
+  .club-badge-img {
+    max-width: 260px;
   }
 }
