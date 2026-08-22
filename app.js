@@ -174,5 +174,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ==========================================
+  // 4. Intro Aperture Mask Reveal Lifecycle
+  // ==========================================
+  const introOverlay = document.getElementById('intro-mask-overlay');
+  if (introOverlay) {
+    // Play an enchanted chord when aperture expands
+    setTimeout(() => {
+      playChime(523.25, 0.35); // C5
+      setTimeout(() => playChime(659.25, 0.35), 110); // E5
+      setTimeout(() => playChime(783.99, 0.45), 220); // G5
+      setTimeout(() => playChime(1046.50, 0.55), 330); // C6
+    }, 280);
+
+    const closeIntro = () => {
+      introOverlay.classList.add('is-opened');
+      setTimeout(() => {
+        introOverlay.style.display = 'none'; // Free 100% GPU memory
+      }, 500);
+    };
+
+    // Click to fast-forward / skip intro
+    introOverlay.addEventListener('click', closeIntro);
+
+    // Auto cleanup after animation ends
+    setTimeout(closeIntro, 2000);
+  }
+
   console.log("Ban Văn Nghệ Thể Thao - Landing page ready!");
 });

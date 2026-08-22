@@ -23,6 +23,51 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Intro Aperture Mask Overlay (Shape Reveal from Asset 12.svg) -->
+  <div class="intro-mask-overlay" id="intro-mask-overlay">
+    <svg class="intro-mask-svg" viewBox="-500 -500 1000 1000" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="sparkle-border-grad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffff6b" />
+          <stop offset="70%" stop-color="#3deebb" />
+          <stop offset="100%" stop-color="#d323ff" />
+        </radialGradient>
+        
+        <mask id="aperture-star-mask">
+          <!-- Dark curtain background bounds (optimized viewport coverage) -->
+          <rect x="-2000" y="-2000" width="4000" height="4000" fill="#ffffff" />
+          <!-- Black shape cuts a transparent hole right at the center (0,0) -->
+          <g class="mask-shape-scaler">
+            <path 
+              d="M95.14,0C113.7,68.92,65.77,110.63,0,82.79c65.77,27.84,82.52,98.94,33.25,141.15,49.27-42.2,110.58-15.08,121.7,53.84-11.12-68.92,44.35-123.13,110.12-107.6-65.77-15.52-65.77-101.25,0-170.17C199.3,68.92,113.7,68.92,95.14,0Z" 
+              transform="translate(-132.535, -138.885)"
+              fill="#000000" 
+            />
+          </g>
+        </mask>
+      </defs>
+      
+      <!-- Dark Curtain Layer -->
+      <rect x="-2000" y="-2000" width="4000" height="4000" fill="#0b0517" mask="url(#aperture-star-mask)" />
+      
+      <!-- Glowing magical outline along the shape cutout (sharp corners) -->
+      <g class="mask-border-scaler">
+        <path 
+          class="mask-border-path"
+          d="M95.14,0C113.7,68.92,65.77,110.63,0,82.79c65.77,27.84,82.52,98.94,33.25,141.15,49.27-42.2,110.58-15.08,121.7,53.84-11.12-68.92,44.35-123.13,110.12-107.6-65.77-15.52-65.77-101.25,0-170.17C199.3,68.92,113.7,68.92,95.14,0Z" 
+          transform="translate(-132.535, -138.885)"
+          fill="none" 
+          stroke="url(#sparkle-border-grad)" 
+          stroke-width="4"
+          stroke-linejoin="miter"
+          stroke-miterlimit="14"
+          stroke-linecap="butt"
+          vector-effect="non-scaling-stroke"
+        />
+      </g>
+    </svg>
+  </div>
+
   <!-- Canvas for magical sparkles/stars effect -->
   <canvas id="magic-canvas"></canvas>
 
