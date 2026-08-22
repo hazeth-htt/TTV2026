@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const particles = [];
-    const PARTICLE_COUNT = Math.min(60, Math.floor(window.innerWidth / 22));
+    const PARTICLE_COUNT = Math.min(50, Math.floor(window.innerWidth / 26));
 
     class Particle {
       constructor() {
@@ -110,17 +110,34 @@ document.addEventListener('DOMContentLoaded', () => {
       particles.push(new Particle());
     }
 
-    function animateParticles() {
+    let isIntroPhase = true;
+    let animId = null;
+    let lastDraw = 0;
+
+    // After intro finishes (2.2s), throttle particle loop to 25fps to conserve 75% GPU/CPU
+    setTimeout(() => {
+      isIntroPhase = false;
+    }, 2200);
+
+    function animateParticles(time) {
+      if (!isIntroPhase) {
+        // Throttled post-intro loop (25-30fps)
+        if (time - lastDraw < 38) {
+          animId = requestAnimationFrame(animateParticles);
+          return;
+        }
+      }
+      lastDraw = time;
+
       ctx.clearRect(0, 0, width, height);
       for (let i = 0; i < particles.length; i++) {
         particles[i].update();
         particles[i].draw();
       }
-      requestAnimationFrame(animateParticles);
+      animId = requestAnimationFrame(animateParticles);
     }
     
-    // Start canvas animation
-    requestAnimationFrame(animateParticles);
+    animId = requestAnimationFrame(animateParticles);
   }
 
   // ==========================================
@@ -146,22 +163,28 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 3. Badge 3D Tilt & Audio Hover Interactions
+  // 4. Badge 3D Magnetic Tilt & Audio Hover (RAF Throttled, Zero Style Conflict)
   // ==========================================
   const badgeCards = document.querySelectorAll('.badge-card, .club-badge-item');
 
   badgeCards.forEach(card => {
-    // Magnetic 3D tilt effect on hover
+    let rafId = null;
+
+    // Magnetic 3D tilt effect on hover managed exclusively by JS
     card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      const tiltX = (y / (rect.height / 2)) * -8;
-      const tiltY = (x / (rect.width / 2)) * 8;
-      card.style.transform = `perspective(600px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-8px) scale(1.08)`;
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        const tiltX = (y / (rect.height / 2)) * -7;
+        const tiltY = (x / (rect.width / 2)) * 7;
+        card.style.transform = `perspective(600px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) translateY(-8px) scale(1.06)`;
+      });
     });
 
     card.addEventListener('mouseleave', () => {
+      if (rafId) cancelAnimationFrame(rafId);
       card.style.transform = '';
     });
 
@@ -175,31 +198,46 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================
-  // 4. Intro Aperture Mask Reveal Lifecycle
+  // 5. Sequential Intro Lifecycle (Preload Hero -> Start Intro -> Hero Reveal -> Purge Mask)
   // ==========================================
   const introOverlay = document.getElementById('intro-mask-overlay');
-  if (introOverlay) {
-    // Play an enchanted chord when aperture expands
-    setTimeout(() => {
-      playChime(523.25, 0.35); // C5
-      setTimeout(() => playChime(659.25, 0.35), 110); // E5
-      setTimeout(() => playChime(783.99, 0.45), 220); // G5
-      setTimeout(() => playChime(1046.50, 0.55), 330); // C6
-    }, 280);
+  const heroWitch = document.getElementById('hero-character-img');
+  const titleBanner = document.getElementById('title-banner-img');
 
-    const closeIntro = () => {
-      introOverlay.classList.add('is-opened');
+  function startIntroLifecycle() {
+    if (introOverlay) {
+      // Play an enchanted chord when aperture expands
       setTimeout(() => {
-        introOverlay.style.display = 'none'; // Free 100% GPU memory
-      }, 500);
-    };
+        playChime(523.25, 0.35); // C5
+        setTimeout(() => playChime(659.25, 0.35), 110); // E5
+        setTimeout(() => playChime(783.99, 0.45), 220); // G5
+        setTimeout(() => playChime(1046.50, 0.55), 330); // C6
+      }, 250);
 
-    // Click to fast-forward / skip intro
-    introOverlay.addEventListener('click', closeIntro);
+      const closeIntro = () => {
+        introOverlay.classList.add('is-opened');
+        setTimeout(() => {
+          introOverlay.remove(); // Completely remove SVG mask from DOM to free all GPU memory
+        }, 500);
+      };
 
-    // Auto cleanup after animation ends
-    setTimeout(closeIntro, 2000);
+      // Click to fast-forward / skip intro
+      introOverlay.addEventListener('click', closeIntro);
+
+      // Auto cleanup after animation ends
+      setTimeout(closeIntro, 1900);
+    }
   }
+
+  // Pre-decode Hero images before starting animations
+  const decodePromises = [];
+  if (heroWitch && heroWitch.decode) decodePromises.push(heroWitch.decode().catch(() => {}));
+  if (titleBanner && titleBanner.decode) decodePromises.push(titleBanner.decode().catch(() => {}));
+
+  Promise.race([
+    Promise.all(decodePromises),
+    new Promise(resolve => setTimeout(resolve, 200)) // Max wait 200ms fallback
+  ]).then(startIntroLifecycle);
 
   console.log("Ban Văn Nghệ Thể Thao - Landing page ready!");
 });

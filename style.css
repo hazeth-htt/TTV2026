@@ -104,7 +104,7 @@ body {
   stroke-linejoin: miter;
   stroke-miterlimit: 14;
   stroke-linecap: butt;
-  filter: drop-shadow(0 0 10px rgba(61, 238, 187, 0.85)) drop-shadow(0 0 18px rgba(255, 255, 107, 0.6));
+  filter: drop-shadow(0 0 8px rgba(61, 238, 187, 0.75));
   animation: borderGlowLife 1.85s cubic-bezier(0.7, 0, 0.2, 1) forwards;
   will-change: opacity;
 }
@@ -618,8 +618,7 @@ body {
 }
 
 .club-badge-item:hover {
-  transform: translateY(-8px) scale(1.05);
-  filter: none; /* Bỏ drop shadow khi hover */
+  filter: none; /* Let JS handle 3D perspective tilt exclusively */
 }
 
 .club-badge-item:active {
