@@ -58,13 +58,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let width = canvas.width = window.innerWidth;
     let height = canvas.height = window.innerHeight;
 
+    let resizeTimer = null;
     window.addEventListener('resize', () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    });
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }, 150);
+    }, { passive: true });
 
     const particles = [];
-    const PARTICLE_COUNT = Math.min(50, Math.floor(window.innerWidth / 26));
+    const PARTICLE_COUNT = Math.min(45, Math.floor(window.innerWidth / 28));
 
     class Particle {
       constructor() {
@@ -77,13 +81,13 @@ document.addEventListener('DOMContentLoaded', () => {
         this.speedX = (Math.random() - 0.5) * 0.35;
         this.speedY = -Math.random() * 0.5 - 0.2;
         this.opacity = Math.random() * 0.8 + 0.2;
-        this.twinkleSpeed = Math.random() * 0.03 + 0.01;
+        this.twinkleSpeed = Math.random() * 0.003 + 0.001;
         this.hue = Math.random() > 0.4 ? 290 : 50; // Purple / Gold sparkles
       }
-      update() {
+      update(time) {
         this.x += this.speedX;
         this.y += this.speedY;
-        this.opacity += Math.sin(Date.now() * this.twinkleSpeed) * 0.02;
+        this.opacity += Math.sin((time || 0) * this.twinkleSpeed) * 0.02;
         
         if (this.y < -10 || this.x < -10 || this.x > width + 10) {
           this.reset();
@@ -131,13 +135,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
       ctx.clearRect(0, 0, width, height);
       for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
+        particles[i].update(time);
         particles[i].draw();
       }
       animId = requestAnimationFrame(animateParticles);
     }
     
     animId = requestAnimationFrame(animateParticles);
+
+    // Page Visibility API: Auto-pause canvas when user switches tab to save 100% background GPU/CPU
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        if (animId) {
+          cancelAnimationFrame(animId);
+          animId = null;
+        }
+      } else {
+        if (!animId) {
+          lastDraw = performance.now();
+          animId = requestAnimationFrame(animateParticles);
+        }
+      }
+    }, { passive: true });
   }
 
   // ==========================================

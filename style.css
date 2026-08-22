@@ -506,6 +506,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  content-visibility: auto;
+  contain-intrinsic-size: 1200px;
   opacity: 0;
   transform: translateY(50px);
   animation: sectionIntroReveal 0.95s cubic-bezier(0.25, 1, 0.5, 1) 2.2s forwards;
