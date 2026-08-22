@@ -11,8 +11,8 @@
   <link rel="preload" as="image" href="assets/images/title-banner.png" fetchpriority="high">
   
   <!-- Favicon / Tab Icon -->
-  <link rel="icon" type="image/png" href="BVNTT.png">
-  <link rel="apple-touch-icon" href="BVNTT.png">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,8 +34,8 @@
         </radialGradient>
         
         <mask id="aperture-star-mask">
-          <!-- White background keeps dark curtain visible -->
-          <rect x="-10000" y="-10000" width="20000" height="20000" fill="#ffffff" />
+          <!-- Dark curtain background bounds (optimized viewport coverage) -->
+          <rect x="-2000" y="-2000" width="4000" height="4000" fill="#ffffff" />
           <!-- Black shape cuts a transparent hole right at the center (0,0) -->
           <g class="mask-shape-scaler">
             <path 
@@ -48,7 +48,7 @@
       </defs>
       
       <!-- Dark Curtain Layer -->
-      <rect x="-10000" y="-10000" width="20000" height="20000" fill="#0b0517" mask="url(#aperture-star-mask)" />
+      <rect x="-2000" y="-2000" width="4000" height="4000" fill="#0b0517" mask="url(#aperture-star-mask)" />
       
       <!-- Glowing magical outline along the shape cutout (sharp corners) -->
       <g class="mask-border-scaler">
@@ -211,17 +211,17 @@
           <div class="clubs-row clubs-row-3">
             <!-- 1. GLEEBK -->
             <a href="https://docs.google.com/forms/d/e/1FAIpQLScm9odnM1ONY_QPywPoOuNTKGAM40YjxsWRyUJLKRImD6HjCw/viewform" target="_blank" rel="noopener noreferrer" class="club-badge-item" aria-label="GLEEBK - CLB Âm nhạc">
-              <img src="gleebk@288x.png" alt="GLEEBK" class="club-badge-img" />
+              <img src="gleebk@288x.png" alt="GLEEBK" class="club-badge-img" loading="lazy" decoding="async" />
             </a>
 
             <!-- 2. D.O.P -->
             <a href="https://docs.google.com/forms/d/e/1FAIpQLScTecYj-JC1fh9MpdtZIYdRSEkH1u4VKqmZ3G_IQ8_f7t7sFg/viewform?fbzx=7414989199287447880" target="_blank" rel="noopener noreferrer" class="club-badge-item" aria-label="D.O.P - CLB Nhảy">
-              <img src="D.O.P@288x.png" alt="D.O.P" class="club-badge-img" />
+              <img src="D.O.P@288x.png" alt="D.O.P" class="club-badge-img" loading="lazy" decoding="async" />
             </a>
 
             <!-- 3. BeU -->
             <a href="https://docs.google.com/forms/d/e/1FAIpQLScRl7KrOUQwVpbcsgYIwQgSwYAo_Mhp2wvSYMIY3lX58StdPg/viewform" target="_blank" rel="noopener noreferrer" class="club-badge-item" aria-label="BeU - CLB Múa">
-              <img src="Beu.png" alt="BeU" class="club-badge-img" />
+              <img src="Beu.png" alt="BeU" class="club-badge-img" loading="lazy" decoding="async" />
             </a>
           </div>
 
@@ -229,12 +229,12 @@
           <div class="clubs-row clubs-row-2">
             <!-- 4. DAS -->
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSdxooFXmvITYzMD4yzp9NBa02VOE7hEPOhOwiJOveMau7Espw/viewform" target="_blank" rel="noopener noreferrer" class="club-badge-item" aria-label="DAS - CLB Kịch">
-              <img src="das@288x.png" alt="DAS" class="club-badge-img" />
+              <img src="das@288x.png" alt="DAS" class="club-badge-img" loading="lazy" decoding="async" />
             </a>
 
             <!-- 5. EMCEE -->
             <a href="https://docs.google.com/forms/d/e/1FAIpQLScopBWXCUhpxIMAZxTD6WI_i2ON0ZcrzRuHpoptZYrahtwRsw/viewform" target="_blank" rel="noopener noreferrer" class="club-badge-item" aria-label="EMCEE - CLB Dẫn Chương trình">
-              <img src="emcee@288x.png" alt="EMCEE" class="club-badge-img" />
+              <img src="emcee@288x.png" alt="EMCEE" class="club-badge-img" loading="lazy" decoding="async" />
             </a>
           </div>
 
@@ -242,12 +242,12 @@
           <div class="clubs-row clubs-row-2">
             <!-- 6. HBC -->
             <a href="https://forms.gle/tMRYKxrFySi7RWCF6" target="_blank" rel="noopener noreferrer" class="club-badge-item" aria-label="HBC - CLB Bóng rổ">
-              <img src="HBC@288x.png" alt="HBC" class="club-badge-img" />
+              <img src="HBC@288x.png" alt="HBC" class="club-badge-img" loading="lazy" decoding="async" />
             </a>
 
             <!-- 7. HRO -->
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSex1vSKgLOPmcXRAvi65w51PhyF3q3KC0T9_dJ2iBYglY_vpw/viewform" target="_blank" rel="noopener noreferrer" class="club-badge-item" aria-label="HRO - CLB Bóng chày">
-              <img src="HRO@288x.png" alt="HRO" class="club-badge-img" />
+              <img src="HRO@288x.png" alt="HRO" class="club-badge-img" loading="lazy" decoding="async" />
             </a>
           </div>
         </div>

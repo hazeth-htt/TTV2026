@@ -73,6 +73,7 @@ body {
   transform: translateZ(0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  contain: strict;
 }
 
 .intro-mask-overlay.is-opened {
@@ -213,50 +214,49 @@ body {
   }
 }
 
-/* Rotating Magic Light Rays (Optimized GPU footprint) */
+/* Rotating Magic Light Rays (Full 2400px Viewport Length, Hardware-Accelerated) */
 .hero-light-aura {
   position: absolute;
   top: 45%;
   left: 50%;
-  width: 1200px;
-  max-width: 120vw;
-  height: 1200px;
-  max-height: 120vw;
+  width: 2400px;
+  height: 2400px;
   transform: translate3d(-50%, -50%, 0);
-  background: conic-gradient(from 0deg,
-      rgba(255, 240, 100, 0.42) 0deg,
-      rgba(255, 215, 0, 0.42) 26deg,
+  background: 
+    radial-gradient(circle at center, rgba(255, 240, 100, 0.4) 0%, rgba(255, 215, 0, 0.28) 35%, rgba(255, 215, 0, 0.08) 60%, transparent 75%),
+    conic-gradient(from 0deg,
+      rgba(255, 240, 100, 0.38) 0deg,
+      rgba(255, 215, 0, 0.38) 26deg,
       transparent 28deg,
       transparent 58deg,
-      rgba(255, 240, 100, 0.42) 60deg,
-      rgba(255, 215, 0, 0.42) 86deg,
+      rgba(255, 240, 100, 0.38) 60deg,
+      rgba(255, 215, 0, 0.38) 86deg,
       transparent 88deg,
       transparent 118deg,
-      rgba(255, 240, 100, 0.42) 120deg,
-      rgba(255, 215, 0, 0.42) 146deg,
+      rgba(255, 240, 100, 0.38) 120deg,
+      rgba(255, 215, 0, 0.38) 146deg,
       transparent 148deg,
       transparent 178deg,
-      rgba(255, 240, 100, 0.42) 180deg,
-      rgba(255, 215, 0, 0.42) 206deg,
+      rgba(255, 240, 100, 0.38) 180deg,
+      rgba(255, 215, 0, 0.38) 206deg,
       transparent 208deg,
       transparent 238deg,
-      rgba(255, 240, 100, 0.42) 240deg,
-      rgba(255, 215, 0, 0.42) 266deg,
+      rgba(255, 240, 100, 0.38) 240deg,
+      rgba(255, 215, 0, 0.38) 266deg,
       transparent 268deg,
       transparent 298deg,
-      rgba(255, 240, 100, 0.42) 300deg,
-      rgba(255, 215, 0, 0.42) 326deg,
+      rgba(255, 240, 100, 0.38) 300deg,
+      rgba(255, 215, 0, 0.38) 326deg,
       transparent 328deg,
       transparent 360deg);
   border-radius: 50%;
   pointer-events: none;
   z-index: 2;
   animation: rotateLightRays 28s linear infinite;
-  opacity: 0.2;
+  opacity: 0.28;
   mix-blend-mode: screen;
-  mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 0.7) 75%, transparent 98%);
-  -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 0.7) 75%, transparent 98%);
   will-change: transform;
+  contain: strict;
 }
 
 @keyframes rotateLightRays {
