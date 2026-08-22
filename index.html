@@ -19,6 +19,51 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Intro Aperture Mask Overlay (Shape Reveal from Asset 12.svg) -->
+  <div class="intro-mask-overlay" id="intro-mask-overlay">
+    <svg class="intro-mask-svg" viewBox="-500 -500 1000 1000" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="sparkle-border-grad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffff6b" />
+          <stop offset="70%" stop-color="#3deebb" />
+          <stop offset="100%" stop-color="#d323ff" />
+        </radialGradient>
+        
+        <mask id="aperture-star-mask">
+          <!-- White background keeps dark curtain visible -->
+          <rect x="-10000" y="-10000" width="20000" height="20000" fill="#ffffff" />
+          <!-- Black shape cuts a transparent hole right at the center (0,0) -->
+          <g class="mask-shape-scaler">
+            <path 
+              d="M95.14,0C113.7,68.92,65.77,110.63,0,82.79c65.77,27.84,82.52,98.94,33.25,141.15,49.27-42.2,110.58-15.08,121.7,53.84-11.12-68.92,44.35-123.13,110.12-107.6-65.77-15.52-65.77-101.25,0-170.17C199.3,68.92,113.7,68.92,95.14,0Z" 
+              transform="translate(-132.535, -138.885)"
+              fill="#000000" 
+            />
+          </g>
+        </mask>
+      </defs>
+      
+      <!-- Dark Curtain Layer -->
+      <rect x="-10000" y="-10000" width="20000" height="20000" fill="#0b0517" mask="url(#aperture-star-mask)" />
+      
+      <!-- Glowing magical outline along the shape cutout (sharp corners) -->
+      <g class="mask-border-scaler">
+        <path 
+          class="mask-border-path"
+          d="M95.14,0C113.7,68.92,65.77,110.63,0,82.79c65.77,27.84,82.52,98.94,33.25,141.15,49.27-42.2,110.58-15.08,121.7,53.84-11.12-68.92,44.35-123.13,110.12-107.6-65.77-15.52-65.77-101.25,0-170.17C199.3,68.92,113.7,68.92,95.14,0Z" 
+          transform="translate(-132.535, -138.885)"
+          fill="none" 
+          stroke="url(#sparkle-border-grad)" 
+          stroke-width="4"
+          stroke-linejoin="miter"
+          stroke-miterlimit="14"
+          stroke-linecap="butt"
+          vector-effect="non-scaling-stroke"
+        />
+      </g>
+    </svg>
+  </div>
+
   <!-- Canvas for magical sparkles/stars effect -->
   <canvas id="magic-canvas"></canvas>
 
@@ -30,8 +75,9 @@
       
       <!-- Composite Character + Title Banner Graphic -->
       <div class="hero-graphic-container">
-        <!-- Glowing Light Rays Rotating from behind the witch -->
-        <div class="magic-light-rays"></div>
+        <!-- Rotating Magic Light Aura behind witch -->
+        <div class="hero-light-aura"></div>
+
         <img 
           src="assets/images/hero-witch.png" 
           alt="Phù thủy Ban Văn Nghệ Thể Thao" 
@@ -44,18 +90,30 @@
           class="hero-title-overlay"
           id="title-banner-img"
         />
-        <!-- Magic sparkles around witch -->
-        <span class="floating-sparkle sp-1">✦</span>
-        <span class="floating-sparkle sp-2">★</span>
-        <span class="floating-sparkle sp-3">✧</span>
+        <!-- Magic floating sparkles using sao.svg -->
+        <img src="sao.svg" alt="" class="floating-sparkle sp-1" />
+        <img src="sao.svg" alt="" class="floating-sparkle sp-2" />
+        <img src="sao.svg" alt="" class="floating-sparkle sp-3" />
       </div>
 
-      <!-- Badges Bar (Isolation Mode in Figma) -->
+      <!-- Nút Đăng Ký Ngay -->
+      <div class="register-btn-wrapper">
+        <a href="#section2-title" class="register-btn-link" id="register-btn" aria-label="Đăng ký ngay">
+          <img src="đăng ký ngay.svg" alt="Đăng ký ngay" class="register-btn-img" />
+          <!-- 4 Ngôi sao tỏa ra 4 hướng -->
+          <img src="sao.svg" alt="" class="btn-star star-left" />
+          <img src="sao.svg" alt="" class="btn-star star-top" />
+          <img src="sao.svg" alt="" class="btn-star star-right" />
+          <img src="sao.svg" alt="" class="btn-star star-bottom" />
+        </a>
+      </div>
+
+      <!-- Badges Bar (Isolation Mode in Figma) — Preserved in DOM -->
       <section class="clubs-badges-section" id="clubs-section">
         <div class="badges-track">
           
           <!-- 1. GLEEBK - Câu lạc bộ Âm nhạc Đoàn Đại học Bách khoa Hà Nội -->
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLScm9odnM1ONY_QPywPoOuNTKGAM40YjxsWRyUJLKRImD6HjCw/viewform" target="_blank" rel="noopener noreferrer" class="badge-card" aria-label="GLEEBK - Câu lạc bộ Âm nhạc Đoàn Đại học Bách khoa Hà Nội">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScm9odnM1ONY_QPywPoOuNTKGAM40YjxsWRyUJLKRImD6HjCw/viewform" target="_blank" rel="noopener noreferrer" class="badge-card" id="badge-gleebk" aria-label="GLEEBK - Câu lạc bộ Âm nhạc Đoàn Đại học Bách khoa Hà Nội">
             <div class="badge-glow"></div>
             <div class="badge-img-wrapper">
               <img src="assets/images/badge-club-1.png" alt="GLEEBK - CLB Âm nhạc" class="badge-img">
@@ -91,7 +149,7 @@
           </a>
 
           <!-- 5. Hust Basketball Club - Câu lạc bộ Bóng rổ Đoàn Đại học Bách khoa Hà Nội -->
-          <a href="#" target="_blank" rel="noopener noreferrer" class="badge-card" aria-label="Hust Basketball Club - Câu lạc bộ Bóng rổ Đoàn Đại học Bách khoa Hà Nội">
+          <a href="https://forms.gle/tMRYKxrFySi7RWCF6" target="_blank" rel="noopener noreferrer" class="badge-card" aria-label="Hust Basketball Club - Câu lạc bộ Bóng rổ Đoàn Đại học Bách khoa Hà Nội">
             <div class="badge-glow"></div>
             <div class="badge-img-wrapper">
               <img src="assets/images/badge-club-5.png" alt="Hust Basketball Club - CLB Bóng rổ" class="badge-img">
@@ -120,12 +178,72 @@
         </div>
       </section>
 
-      <!-- Bottom Texts (Frame 1 in Figma) -->
-      <div class="hero-callout">
-        <h1 class="callout-heading">Hãy chọn con đường bạn muốn trở thành</h1>
-        <p class="callout-sub">Click vào huy hiệu để đi đến nơi bạn muốn đến</p>
+    </section>
+
+    <!-- Section 2: Khung chuẩn xác 100% từ bgwhite.svg -->
+    <section class="figma-section-container" id="registration-section">
+      <!-- Unified Background from bgwhite.svg -->
+      <div class="figma-bg-unified">
+        <svg class="figma-unified-svg" viewBox="0 0 1440 1419" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1440 1419H0V67L325.5 0L229.5 67L755 0L1287 130L1083.5 26.5L1440 88V1419Z" fill="white"/>
+          <path d="M258 26L0 81V1417H1440V107L1225.5 77.5L1335.5 156.5L750.5 26L209 77.5L258 26Z" fill="#F2EDFF"/>
+        </svg>
       </div>
 
+      <!-- Nội dung bên trong Section -->
+      <div class="figma-section-content">
+        <!-- Tiêu đề Section 2 -->
+        <div class="section-title-wrapper" id="section2-title">
+          <img src="TITLE.svg" alt="Tiêu đề" class="section-title-img" />
+        </div>
+
+        <!-- Bố cục 7 Huy Hiệu CLB (Hàng 3 - 2 - 2) -->
+        <div class="clubs-grid-container" id="clubs-grid">
+          <!-- Hàng 1: 3 Huy hiệu -->
+          <div class="clubs-row clubs-row-3">
+            <!-- 1. GLEEBK -->
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScm9odnM1ONY_QPywPoOuNTKGAM40YjxsWRyUJLKRImD6HjCw/viewform" target="_blank" rel="noopener noreferrer" class="club-badge-item" aria-label="GLEEBK - CLB Âm nhạc">
+              <img src="gleebk@288x.png" alt="GLEEBK" class="club-badge-img" />
+            </a>
+
+            <!-- 2. D.O.P -->
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScTecYj-JC1fh9MpdtZIYdRSEkH1u4VKqmZ3G_IQ8_f7t7sFg/viewform?fbzx=7414989199287447880" target="_blank" rel="noopener noreferrer" class="club-badge-item" aria-label="D.O.P - CLB Nhảy">
+              <img src="D.O.P@288x.png" alt="D.O.P" class="club-badge-img" />
+            </a>
+
+            <!-- 3. BeU -->
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScRl7KrOUQwVpbcsgYIwQgSwYAo_Mhp2wvSYMIY3lX58StdPg/viewform" target="_blank" rel="noopener noreferrer" class="club-badge-item" aria-label="BeU - CLB Múa">
+              <img src="Beu.png" alt="BeU" class="club-badge-img" />
+            </a>
+          </div>
+
+          <!-- Hàng 2: 2 Huy hiệu -->
+          <div class="clubs-row clubs-row-2">
+            <!-- 4. DAS -->
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdxooFXmvITYzMD4yzp9NBa02VOE7hEPOhOwiJOveMau7Espw/viewform" target="_blank" rel="noopener noreferrer" class="club-badge-item" aria-label="DAS - CLB Kịch">
+              <img src="das@288x.png" alt="DAS" class="club-badge-img" />
+            </a>
+
+            <!-- 5. EMCEE -->
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScopBWXCUhpxIMAZxTD6WI_i2ON0ZcrzRuHpoptZYrahtwRsw/viewform" target="_blank" rel="noopener noreferrer" class="club-badge-item" aria-label="EMCEE - CLB Dẫn Chương trình">
+              <img src="emcee@288x.png" alt="EMCEE" class="club-badge-img" />
+            </a>
+          </div>
+
+          <!-- Hàng 3: 2 Huy hiệu -->
+          <div class="clubs-row clubs-row-2">
+            <!-- 6. HBC -->
+            <a href="https://forms.gle/tMRYKxrFySi7RWCF6" target="_blank" rel="noopener noreferrer" class="club-badge-item" aria-label="HBC - CLB Bóng rổ">
+              <img src="HBC@288x.png" alt="HBC" class="club-badge-img" />
+            </a>
+
+            <!-- 7. HRO -->
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSex1vSKgLOPmcXRAvi65w51PhyF3q3KC0T9_dJ2iBYglY_vpw/viewform" target="_blank" rel="noopener noreferrer" class="club-badge-item" aria-label="HRO - CLB Bóng chày">
+              <img src="HRO@288x.png" alt="HRO" class="club-badge-img" />
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
 
   </main>

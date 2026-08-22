@@ -1,9 +1,11 @@
-/**
- * TUYỂN THÀNH VIÊN 7 CLB - INTERACTIVE LOGIC
- * Includes canvas particle system, Web Audio synthesizer, and 3D badge tilt
- */
+// Always pin to the very top on load / reload
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
 
 document.addEventListener('DOMContentLoaded', () => {
+  window.scrollTo(0, 0);
   
   // ==========================================
   // 1. Synthesized Sound Effects (Web Audio API)
@@ -116,9 +118,31 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
+  // 3. Register Button Interaction
+  // ==========================================
+  const registerBtn = document.getElementById('register-btn');
+  if (registerBtn) {
+    registerBtn.addEventListener('mouseenter', () => {
+      playChime(783.99, 0.18); // Play crisp magic chime on hover
+    });
+    registerBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      playChime(1046.50, 0.3); // High chime on click
+      const titleTarget = document.getElementById('section2-title');
+      if (titleTarget) {
+        const topPos = titleTarget.getBoundingClientRect().top + window.pageYOffset - 30;
+        window.scrollTo({
+          top: topPos,
+          behavior: 'smooth'
+        });
+      }
+    });
+  }
+
+  // ==========================================
   // 3. Badge 3D Tilt & Audio Hover Interactions
   // ==========================================
-  const badgeCards = document.querySelectorAll('.badge-card');
+  const badgeCards = document.querySelectorAll('.badge-card, .club-badge-item');
 
   badgeCards.forEach(card => {
     // Magnetic 3D tilt effect on hover
@@ -126,8 +150,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left - rect.width / 2;
       const y = e.clientY - rect.top - rect.height / 2;
-      const tiltX = (y / (rect.height / 2)) * -10;
-      const tiltY = (x / (rect.width / 2)) * 10;
+      const tiltX = (y / (rect.height / 2)) * -8;
+      const tiltY = (x / (rect.width / 2)) * 8;
       card.style.transform = `perspective(600px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-8px) scale(1.08)`;
     });
 
@@ -143,6 +167,30 @@ document.addEventListener('DOMContentLoaded', () => {
       playChime(880, 0.25); // A5 note on click
     });
   });
+
+  // ==========================================
+  // 4. Intro Aperture Mask Reveal Lifecycle
+  // ==========================================
+  const introOverlay = document.getElementById('intro-mask-overlay');
+  if (introOverlay) {
+    // Play an enchanted chord when aperture expands
+    setTimeout(() => {
+      playChime(523.25, 0.4); // C5
+      setTimeout(() => playChime(659.25, 0.4), 120); // E5
+      setTimeout(() => playChime(783.99, 0.5), 240); // G5
+      setTimeout(() => playChime(1046.50, 0.6), 360); // C6
+    }, 400);
+
+    // Click to fast-forward / skip intro
+    introOverlay.addEventListener('click', () => {
+      introOverlay.classList.add('is-opened');
+    });
+
+    // Auto cleanup after animation ends
+    setTimeout(() => {
+      introOverlay.classList.add('is-opened');
+    }, 2400);
+  }
 
   console.log("Ban Văn Nghệ Thể Thao - Landing page ready!");
 });
