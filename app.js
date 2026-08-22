@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
       reset() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.size = Math.random() * 2.2 + 0.8;
+        this.size = Math.random() * 2.0 + 0.8;
         this.speedX = (Math.random() - 0.5) * 0.35;
         this.speedY = -Math.random() * 0.5 - 0.2;
         this.opacity = Math.random() * 0.8 + 0.2;
@@ -91,14 +91,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
       draw() {
-        ctx.save();
+        const alpha = Math.max(0.1, Math.min(1, this.opacity));
+        // Soft outer glow (GPU-friendly, zero shadowBlur lag)
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size * 2.2, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${this.hue}, 100%, 75%, ${alpha * 0.25})`;
+        ctx.fill();
+
+        // Sharp bright core
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${this.hue}, 100%, 75%, ${Math.max(0.1, Math.min(1, this.opacity))})`;
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = `hsla(${this.hue}, 100%, 75%, 0.8)`;
+        ctx.fillStyle = `hsla(${this.hue}, 100%, 88%, ${alpha})`;
         ctx.fill();
-        ctx.restore();
       }
     }
 
@@ -108,13 +112,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function animateParticles() {
       ctx.clearRect(0, 0, width, height);
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-      });
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+      }
       requestAnimationFrame(animateParticles);
     }
-    animateParticles();
+    
+    // Start canvas animation
+    requestAnimationFrame(animateParticles);
   }
 
   // ==========================================
@@ -175,21 +181,24 @@ document.addEventListener('DOMContentLoaded', () => {
   if (introOverlay) {
     // Play an enchanted chord when aperture expands
     setTimeout(() => {
-      playChime(523.25, 0.4); // C5
-      setTimeout(() => playChime(659.25, 0.4), 120); // E5
-      setTimeout(() => playChime(783.99, 0.5), 240); // G5
-      setTimeout(() => playChime(1046.50, 0.6), 360); // C6
-    }, 400);
+      playChime(523.25, 0.35); // C5
+      setTimeout(() => playChime(659.25, 0.35), 110); // E5
+      setTimeout(() => playChime(783.99, 0.45), 220); // G5
+      setTimeout(() => playChime(1046.50, 0.55), 330); // C6
+    }, 280);
+
+    const closeIntro = () => {
+      introOverlay.classList.add('is-opened');
+      setTimeout(() => {
+        introOverlay.style.display = 'none'; // Free 100% GPU memory
+      }, 500);
+    };
 
     // Click to fast-forward / skip intro
-    introOverlay.addEventListener('click', () => {
-      introOverlay.classList.add('is-opened');
-    });
+    introOverlay.addEventListener('click', closeIntro);
 
     // Auto cleanup after animation ends
-    setTimeout(() => {
-      introOverlay.classList.add('is-opened');
-    }, 2400);
+    setTimeout(closeIntro, 2000);
   }
 
   console.log("Ban Văn Nghệ Thể Thao - Landing page ready!");

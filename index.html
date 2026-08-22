@@ -6,6 +6,10 @@
   <title>TUYỂN THÀNH VIÊN BVNTT</title>
   <meta name="description" content="Chào mừng tân sinh viên! Hãy chọn con đường bạn muốn trở thành và tham gia vào 1 trong 7 CLB trường chúng mình.">
   
+  <!-- Preload critical hero assets for instant Vercel rendering -->
+  <link rel="preload" as="image" href="assets/images/hero-witch.png" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/images/title-banner.png" fetchpriority="high">
+  
   <!-- Favicon / Tab Icon -->
   <link rel="icon" type="image/png" href="BVNTT.png">
   <link rel="apple-touch-icon" href="BVNTT.png">
@@ -83,12 +87,16 @@
           alt="Phù thủy Ban Văn Nghệ Thể Thao" 
           class="hero-witch-img"
           id="hero-character-img"
+          fetchpriority="high"
+          decoding="async"
         />
         <img 
           src="assets/images/title-banner.png" 
           alt="Tuyển thành viên CLB Trực thuộc Ban Văn Nghệ Thể Thao" 
           class="hero-title-overlay"
           id="title-banner-img"
+          fetchpriority="high"
+          decoding="async"
         />
         <!-- Magic floating sparkles using sao.svg -->
         <img src="sao.svg" alt="" class="floating-sparkle sp-1" />
