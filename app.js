@@ -118,15 +118,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 2. Register Button Smooth Scroll Interaction
+  // 2. Register Button Smooth Scroll Interaction (Direct to Clubs Grid)
   // ==========================================
   const registerBtn = document.getElementById('register-btn');
   if (registerBtn) {
     registerBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      const titleTarget = document.getElementById('section2-title');
-      if (titleTarget) {
-        const topPos = titleTarget.getBoundingClientRect().top + window.pageYOffset - 30;
+      const clubsGrid = document.getElementById('clubs-grid');
+      if (clubsGrid) {
+        const topPos = clubsGrid.getBoundingClientRect().top + window.pageYOffset - 35;
         window.scrollTo({
           top: topPos,
           behavior: 'smooth'
