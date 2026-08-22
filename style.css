@@ -583,7 +583,7 @@ body {
   align-items: center;
   gap: 2.2rem;
   width: 100%;
-  max-width: 1350px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
@@ -610,7 +610,7 @@ body {
 }
 
 .club-badge-img {
-  width: 340px;
+  width: clamp(340px, 26vw, 420px);
   max-width: 100%;
   height: auto;
   display: block;
@@ -1072,9 +1072,9 @@ body {
 
 /* ==========================================================================
    RESPONSIVE DESIGN BREAKPOINTS
-   Stage 1: Desktop (> 1024px)              -> 3 - 2 - 2
-   Stage 2: Tablets / Medium (641px - 1024px)-> 2 - 1 - 2 - 2
-   Stage 3: Mobile Phones (<= 640px)        -> 1 - 1 - 1 - 1 - 1 - 1 - 1
+   Stage 1: Desktop (> 1024px)              -> 3 - 2 - 2 (Size tối đa: 340px - 420px)
+   Stage 2: Tablets / Medium (641px - 1024px)-> 2 - 1 - 2 - 2 (Size tối đa: 300px - 380px)
+   Stage 3: Mobile Phones (<= 640px)        -> 1 - 1 - 1 - 1 - 1 - 1 - 1 (Size tối đa: 92vw / 380px)
    ========================================================================== */
 
 /* Stage 2: Tablets & Medium Laptops (641px - 1024px) -> Bố cục 2 - 1 - 2 - 2 */
@@ -1084,44 +1084,44 @@ body {
   }
 
   .hero-graphic-container {
-    max-width: 900px;
+    max-width: 920px;
   }
 
   .section-title-img {
-    width: 500px;
+    width: 520px;
     max-width: 90%;
   }
 
   .club-badge-img {
-    width: 260px;
+    width: clamp(290px, 44vw, 380px);
   }
 
   .clubs-grid-container {
-    gap: 1.8rem;
-    max-width: 620px;
+    gap: 2rem;
+    max-width: 840px;
   }
 
   /* Hàng 1 (3 huy hiệu) tự ngắt thành 2 huy hiệu trên + 1 huy hiệu ở giữa dưới -> 2 - 1 */
   .clubs-row-3 {
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 600px;
-    gap: 1.8rem;
+    max-width: 840px;
+    gap: 2rem;
   }
 
   /* Hàng 2 & 3 (2 huy hiệu) giữ nguyên 2 huy hiệu ngang -> 2 và 2 */
   .clubs-row-2 {
     flex-wrap: nowrap;
     justify-content: center;
-    max-width: 600px;
-    gap: 1.8rem;
+    max-width: 840px;
+    gap: 2rem;
   }
 }
 
 /* Stage 3: Mobile Phones (<= 640px) -> Bố cục 1 - 1 - 1 - 1 - 1 - 1 - 1 */
 @media (max-width: 640px) {
   .landing-container {
-    padding: 1rem 1rem 2rem 1rem;
+    padding: 1rem 0.8rem 2rem 0.8rem;
   }
 
   .hero-graphic-container {
@@ -1135,8 +1135,8 @@ body {
   }
 
   .register-btn-img {
-    width: 280px;
-    max-width: 85vw;
+    width: 300px;
+    max-width: 88vw;
   }
 
   .figma-section-container {
@@ -1145,7 +1145,7 @@ body {
   }
 
   .figma-section-content {
-    padding: 5rem 1rem 4rem 1rem;
+    padding: 5rem 0.8rem 4rem 0.8rem;
   }
 
   .section-title-wrapper {
@@ -1154,15 +1154,15 @@ body {
 
   .section-title-img {
     width: 100%;
-    max-width: 360px;
+    max-width: 380px;
   }
 
-  /* Bố cục cột dọc 1 - 1 - 1 - 1 - 1 - 1 - 1 */
+  /* Bố cục cột dọc 1 - 1 - 1 - 1 - 1 - 1 - 1 với size to nhất có thể */
   .clubs-grid-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.6rem;
     width: 100%;
   }
 
@@ -1173,20 +1173,20 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    gap: 1.5rem;
+    gap: 1.6rem;
     flex-wrap: nowrap;
   }
 
   .club-badge-item {
     width: 100%;
-    max-width: 320px;
+    max-width: 400px;
     display: flex;
     justify-content: center;
   }
 
   .club-badge-img {
     width: 100%;
-    max-width: 300px;
+    max-width: min(370px, 92vw);
     height: auto;
   }
 }
@@ -1194,7 +1194,7 @@ body {
 /* Small Mobile Screens (<= 480px) */
 @media (max-width: 480px) {
   .landing-container {
-    padding: 0.8rem 0.8rem 1.8rem 0.8rem;
+    padding: 0.8rem 0.5rem 1.8rem 0.5rem;
   }
 
   .register-btn-wrapper {
@@ -1202,33 +1202,33 @@ body {
   }
 
   .register-btn-img {
-    width: 250px;
-    max-width: 82vw;
+    width: 270px;
+    max-width: 85vw;
   }
 
   .figma-section-content {
-    padding: 4.2rem 0.8rem 3.5rem 0.8rem;
+    padding: 4.2rem 0.5rem 3.5rem 0.5rem;
   }
 
   .section-title-img {
-    max-width: 290px;
+    max-width: 310px;
   }
 
   .clubs-grid-container {
-    gap: 1.2rem;
+    gap: 1.4rem;
   }
 
   .clubs-row,
   .clubs-row-3,
   .clubs-row-2 {
-    gap: 1.2rem;
+    gap: 1.4rem;
   }
 
   .club-badge-item {
-    max-width: 280px;
+    max-width: 360px;
   }
 
   .club-badge-img {
-    max-width: 260px;
+    max-width: min(340px, 92vw);
   }
 }
