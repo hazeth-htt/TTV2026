@@ -118,22 +118,67 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 2. Register Button Smooth Scroll Interaction (Direct to Clubs Grid)
+  // 2. Registration Guide Modal & Scroll Interaction
   // ==========================================
   const registerBtn = document.getElementById('register-btn');
+  const guideModal = document.getElementById('register-guide-modal');
+  const modalCloseBtn = document.getElementById('modal-close-btn');
+  const modalBackdrop = document.getElementById('modal-backdrop');
+  const modalProceedBtn = document.getElementById('modal-proceed-btn');
+
+  function openGuideModal() {
+    if (!guideModal) return;
+    guideModal.classList.add('active');
+    guideModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling while modal is open
+  }
+
+  function closeGuideModal() {
+    if (!guideModal) return;
+    guideModal.classList.remove('active');
+    guideModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function scrollToClubs() {
+    closeGuideModal();
+    const clubsGrid = document.getElementById('clubs-grid');
+    if (clubsGrid) {
+      const topPos = clubsGrid.getBoundingClientRect().top + window.pageYOffset - 35;
+      window.scrollTo({
+        top: topPos,
+        behavior: 'smooth'
+      });
+    }
+  }
+
   if (registerBtn) {
     registerBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      const clubsGrid = document.getElementById('clubs-grid');
-      if (clubsGrid) {
-        const topPos = clubsGrid.getBoundingClientRect().top + window.pageYOffset - 35;
-        window.scrollTo({
-          top: topPos,
-          behavior: 'smooth'
-        });
-      }
+      openGuideModal();
     });
   }
+
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener('click', closeGuideModal);
+  }
+
+  if (modalBackdrop) {
+    modalBackdrop.addEventListener('click', closeGuideModal);
+  }
+
+  if (modalProceedBtn) {
+    modalProceedBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      scrollToClubs();
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && guideModal && guideModal.classList.contains('active')) {
+      closeGuideModal();
+    }
+  });
 
   // ==========================================
   // 3. Badge 3D Magnetic Tilt (RAF Throttled, Zero Style Conflict)
