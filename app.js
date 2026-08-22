@@ -8,49 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.scrollTo(0, 0);
   
   // ==========================================
-  // 1. Synthesized Sound Effects (Web Audio API)
-  // ==========================================
-  let soundEnabled = true;
-  let audioCtx = null;
-
-  function initAudio() {
-    if (!audioCtx) {
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      if (AudioContext) audioCtx = new AudioContext();
-    }
-  }
-
-  function playChime(freq = 587.33, duration = 0.25) {
-    if (!soundEnabled) return;
-    try {
-      initAudio();
-      if (audioCtx && audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
-      if (!audioCtx) return;
-      
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(freq * 1.4, audioCtx.currentTime + duration);
-      
-      gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
-      
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      
-      osc.start();
-      osc.stop(audioCtx.currentTime + duration);
-    } catch(e) {
-      console.warn("Audio error:", e);
-    }
-  }
-
-  // ==========================================
-  // 2. Canvas Magical Sparkles Effect
+  // 1. Canvas Magical Sparkles Effect (Optimized Zero-Syscall Engine)
   // ==========================================
   const canvas = document.getElementById('magic-canvas');
   if (canvas) {
@@ -160,16 +118,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 3. Register Button Interaction
+  // 2. Register Button Smooth Scroll Interaction
   // ==========================================
   const registerBtn = document.getElementById('register-btn');
   if (registerBtn) {
-    registerBtn.addEventListener('mouseenter', () => {
-      playChime(783.99, 0.18); // Play crisp magic chime on hover
-    });
     registerBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      playChime(1046.50, 0.3); // High chime on click
       const titleTarget = document.getElementById('section2-title');
       if (titleTarget) {
         const topPos = titleTarget.getBoundingClientRect().top + window.pageYOffset - 30;
@@ -182,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 4. Badge 3D Magnetic Tilt & Audio Hover (RAF Throttled, Zero Style Conflict)
+  // 3. Badge 3D Magnetic Tilt (RAF Throttled, Zero Style Conflict)
   // ==========================================
   const badgeCards = document.querySelectorAll('.badge-card, .club-badge-item');
 
@@ -206,18 +160,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (rafId) cancelAnimationFrame(rafId);
       card.style.transform = '';
     });
-
-    card.addEventListener('mouseenter', () => {
-      playChime(659.25, 0.15); // E5 note on hover
-    });
-
-    card.addEventListener('click', () => {
-      playChime(880, 0.25); // A5 note on click
-    });
   });
 
   // ==========================================
-  // 5. Sequential Intro Lifecycle (Preload Hero -> Start Intro -> Hero Reveal -> Purge Mask)
+  // 4. Sequential Intro Lifecycle (Preload Hero -> Start Intro -> Hero Reveal -> Purge Mask)
   // ==========================================
   const introOverlay = document.getElementById('intro-mask-overlay');
   const heroWitch = document.getElementById('hero-character-img');
@@ -225,14 +171,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function startIntroLifecycle() {
     if (introOverlay) {
-      // Play an enchanted chord when aperture expands
-      setTimeout(() => {
-        playChime(523.25, 0.35); // C5
-        setTimeout(() => playChime(659.25, 0.35), 110); // E5
-        setTimeout(() => playChime(783.99, 0.45), 220); // G5
-        setTimeout(() => playChime(1046.50, 0.55), 330); // C6
-      }, 250);
-
       const closeIntro = () => {
         introOverlay.classList.add('is-opened');
         setTimeout(() => {
